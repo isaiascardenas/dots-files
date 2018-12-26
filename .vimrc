@@ -62,8 +62,6 @@ set nocursorline                                             " don't highlight c
 
 " ___Visuals___
 
-set macligatures
-set guifont=Fira\ Code:h14
 set linespace=15
 set guioptions-=l
 set guioptions-=L
