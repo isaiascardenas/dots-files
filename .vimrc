@@ -88,10 +88,9 @@ noremap <C-k> <C-w>k
 noremap <C-l> <C-w>l
 inoremap jj <ESC>
 noremap <D-s> :w
-noremap <C-tab> :bnext<CR>
-noremap <C-S-tab> :bprevious<CR>
+noremap <leader>n :bnext<CR>
+noremap <leader>p :bprevious<CR>
 noremap <leader>l :Align
-noremap <leader>p :Prettier
 nnoremap <leader>a :Ag<space>
 nnoremap <leader>b :CtrlPBuffer<CR>
 nnoremap <leader>d :NERDTreeToggle<CR>
@@ -118,6 +117,7 @@ nmap  :setlocal spell spelllang=en_en<cr>
 let g:ctrlp_match_window = 'order:ttb,max:20'
 let g:NERDSpaceDelims=1
 let g:gitgutter_enabled = 0
+let g:NERDTreeWinSize=70
 
 "__Airline
 
