@@ -12,12 +12,12 @@ Plug 'kien/ctrlp.vim'
 Plug 'scrooloose/nerdcommenter'
 Plug 'bling/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'valloric/youcompleteme'
 Plug 'posva/vim-vue'
 Plug 'chriskempson/base16-vim'
 Plug 'prettier/vim-prettier', { 'do': 'npm install' }
 Plug 'jwalton512/vim-blade'
 Plug 'leafgarland/typescript-vim'
+Plug 'drewtempelmeyer/palenight.vim'
 
 call plug#end()
 
@@ -62,16 +62,34 @@ set nocursorline                                             " don't highlight c
 
 " ___Visuals___
 
+if (has("termguicolors"))
+  let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+  let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+  set termguicolors
+endif
+
+colorscheme palenight
 set linespace=15
-set guioptions-=l
-set guioptions-=L
-set guioptions-=r
-set guioptions-=R
-set termguicolors
-syntax enable
+set t_Co=256
+syntax on
 set background=dark
-colorscheme base16-onedark
-let base16colorspace=256
+hi vertsplit ctermfg=238 ctermbg=235
+hi LineNr ctermfg=237
+hi StatusLine ctermfg=235 ctermbg=245
+hi StatusLineNC ctermfg=235 ctermbg=237
+hi Search ctermbg=58 ctermfg=15
+hi Default ctermfg=1
+hi clear SignColumn
+hi SignColumn ctermbg=235
+hi GitGutterAdd ctermbg=235 ctermfg=245
+hi GitGutterChange ctermbg=235 ctermfg=245
+hi GitGutterDelete ctermbg=235 ctermfg=245
+hi GitGutterChangeDelete ctermbg=235 ctermfg=245
+hi EndOfBuffer ctermfg=237 ctermbg=235
+set statusline=%=&P\ %f\ %m
+set fillchars=vert:\ ,stl:\ ,stlnc:\ 
+set laststatus=2
+set noshowmode
 
 
 
@@ -121,6 +139,7 @@ let g:NERDTreeWinSize=70
 
 "__Airline
 
+let g:airline_theme = "palenight"
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#left_sep = ' '
 let g:airline#extensions#tabline#left_alt_sep = '|'
@@ -168,4 +187,3 @@ let g:blade_custom_directives_pairs = {
       \   'markdown': 'endmarkdown',
       \   'cache': 'endcache',
       \ }
-
