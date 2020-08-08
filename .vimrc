@@ -4,20 +4,23 @@
 call plug#begin('~/.vim/plugged')
 
 Plug 'altercation/vim-colors-solarized'
-Plug 'tpope/vim-fugitive'
-Plug 'scrooloose/nerdtree'
-Plug 'tpope/vim-surround'
-Plug 'scrooloose/syntastic'
-Plug 'kien/ctrlp.vim'
-Plug 'scrooloose/nerdcommenter'
 Plug 'bling/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
-Plug 'posva/vim-vue'
 Plug 'chriskempson/base16-vim'
-Plug 'prettier/vim-prettier', { 'do': 'npm install' }
-Plug 'jwalton512/vim-blade'
-Plug 'leafgarland/typescript-vim'
+Plug 'dart-lang/dart-vim-plugin'
 Plug 'drewtempelmeyer/palenight.vim'
+Plug 'jwalton512/vim-blade'
+Plug 'kien/ctrlp.vim'
+Plug 'leafgarland/typescript-vim'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'peitalin/vim-jsx-typescript'
+Plug 'posva/vim-vue'
+" Plug 'prettier/vim-prettier', { 'do': 'npm install' }
+Plug 'scrooloose/nerdcommenter'
+Plug 'scrooloose/nerdtree'
+Plug 'scrooloose/syntastic'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-surround'
+Plug 'vim-airline/vim-airline-themes'
 
 call plug#end()
 
@@ -98,6 +101,8 @@ set noshowmode
 " ___Keyboard Mappings____
 
 let mapleader = ','
+cabbrev q <c-r>=(getcmdtype()==':' && getcmdpos()==1 ? 'close' : 'q')<CR>
+cabbrev qa<c-r>=(getcmdtype()==':' && getcmdpos()==1 ? 'close' : 'qa')<CR>
 noremap ,ev :tabedit $MYVIMRC<cr>
 noremap <leader><space> :nohlsearch<cr>
 noremap <C-h> <C-w>h
@@ -172,10 +177,11 @@ function! NERDCommenter_after()
   endif
 endfunction
 
-"__Vim-Prettier__
+ "__Vim-Prettier__
+command! -nargs=0 Prettier :call CocAction('runCommand', 'prettier.formatFile')
 
-autocmd FileType javascript set formatprg=prettier-eslint\ --stdin
-autocmd BufNewFile,BufReadPost *.vue setfiletype vue
+" autocmd FileType javascript set formatprg=prettier-eslint\ --stdin
+" autocmd BufNewFile,BufReadPost *.vue setfiletype vue
 
 "__Vim-Blade__
 
@@ -187,3 +193,43 @@ let g:blade_custom_directives_pairs = {
       \   'markdown': 'endmarkdown',
       \   'cache': 'endcache',
       \ }
+
+"__Vim-Html-Tidy__
+
+let g:syntastic_html_tidy_ignore_errors=[" proprietary attribute " ,"trimming empty <", "unescaped &" , "lacks \"action", "is not recognized!", "discarding unexpected"]
+
+"__Vim-Coc__
+
+autocmd FileType json syntax match Comment +\/\/.\+$+
+
+" __Vim-jsx__
+" set filetypes as typescript.tsx
+autocmd BufNewFile,BufRead *.tsx,*.jsx set filetype=typescript.tsx
+" dark red
+hi tsxTagName guifg=#E06C75
+hi tsxComponentName guifg=#E06C75
+hi tsxCloseComponentName guifg=#E06C75
+
+" orange
+hi tsxCloseString guifg=#F99575
+hi tsxCloseTag guifg=#F99575
+hi tsxCloseTagName guifg=#F99575
+hi tsxAttributeBraces guifg=#F99575
+hi tsxEqual guifg=#F99575
+
+" yellow
+hi tsxAttrib guifg=#F8BD7F cterm=italic
+" light-grey
+hi tsxTypeBraces guifg=#999999
+" dark-grey
+hi tsxTypes guifg=#666666
+
+hi ReactState guifg=#C176A7
+hi ReactProps guifg=#D19A66
+hi ApolloGraphQL guifg=#CB886B
+hi Events ctermfg=204 guifg=#56B6C2
+hi ReduxKeywords ctermfg=204 guifg=#C678DD
+hi ReduxHooksKeywords ctermfg=204 guifg=#C176A7
+hi WebBrowser ctermfg=204 guifg=#56B6C2
+hi ReactLifeCycleMethods ctermfg=204 guifg=#D19A66
+
