@@ -8,6 +8,8 @@ Plug 'bling/vim-airline'
 Plug 'chriskempson/base16-vim'
 Plug 'dart-lang/dart-vim-plugin'
 Plug 'drewtempelmeyer/palenight.vim'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
 Plug 'jwalton512/vim-blade'
 Plug 'kyazdani42/nvim-web-devicons' " for file icons
 Plug 'kyazdani42/nvim-tree.lua'
@@ -118,6 +120,7 @@ nnoremap <leader>d :NvimTreeToggle<CR>
 nnoremap <leader>r :NvimTreeRefresh<CR>
 nnoremap <leader>f :NvimTreeFindFile<CR>
 nnoremap <leader>] :TagbarToggle<CR>
+nnoremap <C-p> :<C-u>FZF<CR> 
 nnoremap <leader>g :GitGutterToggle<CR>
 noremap <silent> <leader>V :source ~/.vimrc<CR>:filetype detect<CR>:exe ":echo 'vimrc reloaded'"<CR>
 nnoremap <Left> :vertical resize -5<CR>
@@ -136,12 +139,12 @@ nmap  :setlocal spell spelllang=en_en<cr>
 "__Nvim-Tree
 let g:nvim_tree_width = 40 "30 by default
 let g:nvim_tree_ignore = [] "empty by default
-let g:nvim_tree_auto_open = 1 "0 by default, opens the tree when typing `vim $DIR` or `vim`
+let g:nvim_tree_auto_open = 0 "0 by default, opens the tree when typing `vim $DIR` or `vim`
 let g:nvim_tree_auto_close = 0 "0 by default, closes the tree when it's the last window
-let g:nvim_tree_quit_on_open = 0 "0 by default, closes the tree when you open a file
+let g:nvim_tree_quit_on_open = 1 "0 by default, closes the tree when you open a file
 let g:nvim_tree_follow = 0 "0 by default, this option allows the cursor to be updated when entering a buffer
 let g:nvim_tree_indent_markers = 1 "0 by default, this option shows indent markers when folders are open
-let g:nvim_tree_hide_dotfiles = 0 "0 by default, this option hides files and folders starting with a dot `.`
+let g:nvim_tree_hide_dotfiles = 1 "0 by default, this option hides files and folders starting with a dot `.`
 let g:nvim_tree_git_hl = 9 "0 by default, will enable file highlight for git attributes (can be used without the icons).
 let g:nvim_tree_root_folder_modifier = ':~' "This is the default. See :help filename-modifiers for more options
 let g:nvim_tree_tab_open = 0 "0 by default, will open the tree when entering a new tab and the tree was previously open
@@ -210,6 +213,10 @@ let g:syntastic_html_tidy_ignore_errors=[" proprietary attribute " ,"trimming em
 
 autocmd FileType json syntax match Comment +\/\/.\+$+
 
+"__Vim-Dart__ 
+
+let g:dart_format_on_save = 1
+
 " __Vim-jsx__
 " set filetypes as typescript.tsx
 autocmd BufNewFile,BufRead *.tsx,*.jsx set filetype=typescript.tsx
@@ -240,3 +247,4 @@ hi ReduxKeywords ctermfg=204 guifg=#C678DD
 hi ReduxHooksKeywords ctermfg=204 guifg=#C176A7
 hi WebBrowser ctermfg=204 guifg=#56B6C2
 hi ReactLifeCycleMethods ctermfg=204 guifg=#D19A66
+
