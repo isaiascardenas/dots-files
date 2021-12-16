@@ -1,7 +1,10 @@
+".config/nvim/init.vim for neovim
+
 
 "___Vim-Plug List___
 
-call plug#begin('~/.vim/plugged')
+call plug#begin('~/.config/nvim/plugged')
+
 
 Plug 'altercation/vim-colors-solarized'
 Plug 'bling/vim-airline'
@@ -11,16 +14,13 @@ Plug 'drewtempelmeyer/palenight.vim'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'jwalton512/vim-blade'
-Plug 'kyazdani42/nvim-web-devicons' " for file icons
-Plug 'kyazdani42/nvim-tree.lua'
 Plug 'leafgarland/typescript-vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'peitalin/vim-jsx-typescript'
 Plug 'posva/vim-vue'
+Plug 'ryanoasis/vim-devicons'
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/syntastic'
-Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-surround'
 Plug 'vim-airline/vim-airline-themes'
 
 call plug#end()
@@ -38,12 +38,12 @@ set backspace=2                                              " Fix broken backsp
 set backupcopy=yes                                           " see :help crontab
 set clipboard=unnamed                                        " yank and paste with the system clipboard
 set directory-=.                                             " don't store swapfiles in the current directory
-set encoding=utf-8
+set encoding=UTF-8
 set ignorecase                                               " case-insensitive search
 set incsearch                                                " search as you type
 set laststatus=2                                             " always show statusline
 set list                                                     " show trailing whitespace
-set listchars=tab:▸\ ,trail:▫
+set listchars=tab:?\ ,trail:?
 set number                                                   " show line numbers
 set ruler                                                    " show where you are
 set scrolloff=3                                              " show context above/below cursorline
@@ -116,12 +116,8 @@ noremap <leader>n :bnext<CR>
 noremap <leader>p :bprevious<CR>
 noremap <leader>l :Align
 nnoremap <leader>a :Ag<space>
-nnoremap <leader>d :NvimTreeToggle<CR>
-nnoremap <leader>r :NvimTreeRefresh<CR>
-nnoremap <leader>f :NvimTreeFindFile<CR>
-nnoremap <leader>] :TagbarToggle<CR>
-nnoremap <C-p> :<C-u>FZF<CR> 
-nnoremap <leader>g :GitGutterToggle<CR>
+nnoremap <C-p> :<C-u>FZF<CR>
+nnoremap <leader>d <Cmd>CocCommand explorer<CR>
 noremap <silent> <leader>V :source ~/.vimrc<CR>:filetype detect<CR>:exe ":echo 'vimrc reloaded'"<CR>
 nnoremap <Left> :vertical resize -5<CR>
 nnoremap <Right> :vertical resize +5<CR>
@@ -136,23 +132,6 @@ nmap  :setlocal spell spelllang=en_en<cr>
 
 " ___Plugins Settings___
 
-"__Nvim-Tree
-let g:nvim_tree_width = 40 "30 by default
-let g:nvim_tree_ignore = [] "empty by default
-let g:nvim_tree_auto_open = 0 "0 by default, opens the tree when typing `vim $DIR` or `vim`
-let g:nvim_tree_auto_close = 0 "0 by default, closes the tree when it's the last window
-let g:nvim_tree_quit_on_open = 1 "0 by default, closes the tree when you open a file
-let g:nvim_tree_follow = 0 "0 by default, this option allows the cursor to be updated when entering a buffer
-let g:nvim_tree_indent_markers = 1 "0 by default, this option shows indent markers when folders are open
-let g:nvim_tree_hide_dotfiles = 1 "0 by default, this option hides files and folders starting with a dot `.`
-let g:nvim_tree_git_hl = 9 "0 by default, will enable file highlight for git attributes (can be used without the icons).
-let g:nvim_tree_root_folder_modifier = ':~' "This is the default. See :help filename-modifiers for more options
-let g:nvim_tree_tab_open = 0 "0 by default, will open the tree when entering a new tab and the tree was previously open
-let g:nvim_tree_width_allow_resize  = 0 "0 by default, will not resize the tree when opening a file
-
-" a list of groups can be found at `:help nvim_tree_highlight`
-"highlight NvimTreeFolderIcon guibg=blue
-
 "__Airline
 
 let g:airline_theme = "palenight"
@@ -164,7 +143,6 @@ let g:airline#extensions#tabline#formatter = 'unique_tail'
 "__Vim-Vue
 
 autocmd FileType vue syntax sync fromstart
-autocmd BufRead,BufNewFile *.vue setlocal filetype=vue.html.javascript.css
 
 "__NerdCommenter
 
@@ -189,7 +167,7 @@ function! NERDCommenter_after()
 endfunction
 
  "__Vim-Prettier__
-command! -nargs=0 Prettier :call CocAction('runCommand', 'prettier.formatFile')
+command! -nargs=0 Prettier :CocCommand prettier.formatFile
 
 " autocmd FileType javascript set formatprg=prettier-eslint\ --stdin
 " autocmd BufNewFile,BufReadPost *.vue setfiletype vue
@@ -247,4 +225,3 @@ hi ReduxKeywords ctermfg=204 guifg=#C678DD
 hi ReduxHooksKeywords ctermfg=204 guifg=#C176A7
 hi WebBrowser ctermfg=204 guifg=#56B6C2
 hi ReactLifeCycleMethods ctermfg=204 guifg=#D19A66
-
