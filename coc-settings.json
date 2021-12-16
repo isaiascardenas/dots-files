@@ -1,0 +1,21 @@
+{
+  // global
+  "coc.preferences.formatOnSaveFiletypes": [
+    "css",
+    "dart",
+    "vue",
+    "json",
+    "markdown",
+    "javascript"
+  ],
+
+  // coc-explorer
+  "explorer.icon.enableNerdfont": true,
+  "explorer.width": 40,
+
+  // coc-prettier
+  "prettier.trailingComma": "es5",
+  "prettier.singleQuote": true,
+  "prettier.tabWidth": 2,
+  "prettier.semi": true
+}
