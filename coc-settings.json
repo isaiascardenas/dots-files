@@ -1,5 +1,6 @@
 {
   // global
+  "coc.preferences.noselect": false,
   "coc.preferences.formatOnSaveFiletypes": [
     "css",
     "dart",
@@ -11,11 +12,16 @@
 
   // coc-explorer
   "explorer.icon.enableNerdfont": true,
-  "explorer.width": 40,
 
   // coc-prettier
   "prettier.trailingComma": "es5",
   "prettier.singleQuote": true,
   "prettier.tabWidth": 2,
-  "prettier.semi": true
+  "prettier.semi": true,
+
+  // coc-flutter
+  "flutter.autoOpenDevLog": true,
+  "flutter.autoHideDevLog": true,
+  "flutter.openDevLogSplitCommand": "botright vnew",
+  "flutter.selectedDeviceId": "248A3B01-B8AB-4FF3-8C05-87F6BE2DAC13"
 }
