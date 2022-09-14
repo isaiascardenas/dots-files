@@ -5,17 +5,16 @@
 
 call plug#begin('~/.config/nvim/plugged')
 
-
-Plug 'altercation/vim-colors-solarized'
 Plug 'dart-lang/dart-vim-plugin'
 Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
 Plug 'itchyny/lightline.vim'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'jwalton512/vim-blade'
-Plug 'leafgarland/typescript-vim'
+Plug 'mtdl9/vim-log-highlighting'
+Plug 'mxw/vim-jsx'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'peitalin/vim-jsx-typescript'
+Plug 'pangloss/vim-javascript'
 Plug 'posva/vim-vue'
 Plug 'ryanoasis/vim-devicons'
 Plug 'scrooloose/nerdcommenter'
