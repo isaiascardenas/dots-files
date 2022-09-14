@@ -7,10 +7,9 @@ call plug#begin('~/.config/nvim/plugged')
 
 
 Plug 'altercation/vim-colors-solarized'
-Plug 'bling/vim-airline'
-Plug 'chriskempson/base16-vim'
 Plug 'dart-lang/dart-vim-plugin'
-Plug 'drewtempelmeyer/palenight.vim'
+Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
+Plug 'itchyny/lightline.vim'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'jwalton512/vim-blade'
@@ -21,7 +20,6 @@ Plug 'posva/vim-vue'
 Plug 'ryanoasis/vim-devicons'
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/syntastic'
-Plug 'vim-airline/vim-airline-themes'
 
 call plug#end()
 
@@ -72,7 +70,7 @@ if (has("termguicolors"))
   set termguicolors
 endif
 
-colorscheme palenight
+colorscheme tokyonight-storm
 set linespace=15
 set t_Co=256
 syntax on
@@ -132,13 +130,8 @@ nmap  :setlocal spell spelllang=en_en<cr>
 
 " ___Plugins Settings___
 
-"__Airline
-
-let g:airline_theme = "palenight"
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#left_sep = ' '
-let g:airline#extensions#tabline#left_alt_sep = '|'
-let g:airline#extensions#tabline#formatter = 'unique_tail'
+"__Lightline
+let g:lightline = {'colorscheme': 'tokyonight'}
 
 "__Vim-Vue
 
@@ -166,7 +159,7 @@ function! NERDCommenter_after()
   endif
 endfunction
 
- "__Vim-Prettier__
+"__Vim-Prettier__
 command! -nargs=0 Prettier :CocCommand prettier.formatFile
 
 " autocmd FileType javascript set formatprg=prettier-eslint\ --stdin
@@ -191,7 +184,7 @@ let g:syntastic_html_tidy_ignore_errors=[" proprietary attribute " ,"trimming em
 
 autocmd FileType json syntax match Comment +\/\/.\+$+
 
-"__Vim-Dart__ 
+"__Vim-Dart__
 
 let g:dart_format_on_save = 1
 
