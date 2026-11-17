@@ -1,0 +1,48 @@
+title = " "
+macos-titlebar-proxy-icon = hidden
+
+initial-command = /opt/homebrew/bin/tmux new-session -A -s ghostty
+
+# Use the regular face for all styles, matching Kitty's explicit assignments.
+font-family = FiraCode Nerd Font
+font-style = Regular
+font-style-bold = false
+font-style-italic = false
+font-style-bold-italic = false
+font-size = 18
+# Kitty's integer line-height adjustment adds pixels, not a percentage.
+adjust-cell-height = 20
+# Standard programming ligatures remain enabled.
+font-feature = calt
+font-feature = liga
+
+cursor-style = block
+# Preserve the block cursor at shell prompts and disable automatic titles.
+shell-integration-features = no-title,no-cursor
+window-padding-x = 4
+window-padding-y = 4
+
+foreground = #a9b1d6
+background = #24283b
+cursor-color = #c0caf5
+cursor-text = #24283b
+selection-foreground = cell-foreground
+selection-background = #28344a
+
+palette = 0=#414868
+palette = 8=#414868
+palette = 1=#f7768e
+palette = 9=#f7768e
+palette = 2=#73daca
+palette = 10=#73daca
+palette = 3=#e0af68
+palette = 11=#e0af68
+palette = 4=#7aa2f7
+palette = 12=#7aa2f7
+palette = 5=#bb9af7
+palette = 13=#bb9af7
+palette = 6=#7dcfff
+palette = 14=#7dcfff
+palette = 7=#c0caf5
+palette = 15=#c0caf5
+
